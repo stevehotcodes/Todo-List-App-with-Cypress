@@ -1,0 +1,40 @@
+<!-- Todo list component -->
+<div class="todo-list-container">
+    <h3 class="todo-title">Todo</h3>
+    
+    <div class="todo-input-container">
+        <input 
+        #todoText 
+        type="text" 
+        placeholder="Try typing something here" 
+        [(ngModel)]="newTaskText"
+        [ngModel]="newTaskText"
+      >
+        <button type="submit" (click)="editMode? updateTask() :addTask(todoText.value)">{{editMode ? 'Update' :'Add'}}</button>
+
+        <button 
+        *ngIf="editMode"
+        type="button" 
+        (click)="cancelEdit()">
+        Cancel
+      </button>
+    </div>
+
+    <ul class="todo-list">
+        <li *ngFor="let item of todoList">
+            <input type="checkbox" [checked]="item.completed" (change)="toggleCompleted(item.id)">
+            <span>{{item.task}}</span>
+           <div class="delete-edit-container">
+            <button class="delete-btn" (click)="deleteTask(item.id)">Delete</button>
+            <button class="edit-btn" (click)="editTask(item.id)" >Edit</button>
+           </div>
+        </li>
+    </ul>
+
+    <h4>Completed Tasks</h4>
+    <ul >
+      <li *ngFor="let item of completedList">
+        <span>{{ item.task }}</span>
+      </li>
+    </ul>
+</div>
