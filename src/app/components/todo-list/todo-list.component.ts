@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TodoItem } from '../../interfaces/types';
 import { CommonModule, NgForOf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit {
   completedList:TodoItem[]=[]
   incompleted:TodoItem[]=[]
 
-  constructor(){}
+  constructor(private cdr: ChangeDetectorRef) {}
    
   ngOnInit(): void {
 
@@ -98,6 +98,7 @@ export class TodoListComponent implements OnInit {
         this.saveTodoItem();
         this.loadTasks();
         this.fetchCompletedTasks()
+        this.cdr.detectChanges()
         
     }
   }

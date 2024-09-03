@@ -1,26 +1,30 @@
-<!-- Todo list component -->
-<div class="todo-list-container">
-    <h3 class="todo-title">Todo</h3>
+<div class="todo-list-container" data-cy="todo-list-container">
+    <h3 class="todo-title" data-cy="todo-title">Todo</h3>
     
-    <div class="todo-input-container">
+    <div class="todo-input-container" data-cy="todo-input-container">
         <input 
         #todoText 
         type="text" 
         placeholder="Try typing something here" 
         [(ngModel)]="newTaskText"
         [ngModel]="newTaskText"
+        data-cy="todo-input"
       >
-        <button type="submit" (click)="editMode? updateTask() :addTask(todoText.value)">{{editMode ? 'Update' :'Add'}}</button>
+        <button type="submit" (click)="editMode? updateTask() :addTask(todoText.value)" data-cy="add-update-btn">{{editMode ? 'Update' :'Add'}}</button>
 
         <button 
         *ngIf="editMode"
         type="button" 
-        (click)="cancelEdit()">
+        (click)="cancelEdit()"
+        data-cy="cancel-btn"    
+        
+        >
         Cancel
+        
       </button>
     </div>
 
-    <ul class="todo-list">
+    <ul class="todo-list "data-cy="todo-list-container">
         <li *ngFor="let item of todoList">
             <input type="checkbox" [checked]="item.completed" (change)="toggleCompleted(item.id)">
             <span>{{item.task}}</span>
@@ -31,8 +35,8 @@
         </li>
     </ul>
 
-    <h4>Completed Tasks</h4>
-    <ul >
+    <h4 data-cy="completed-tasks-title">Completed Tasks</h4>
+    <ul data-cy="completed-tasks-list" >
       <li *ngFor="let item of completedList">
         <span>{{ item.task }}</span>
       </li>
