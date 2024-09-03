@@ -36,18 +36,15 @@
 //   }
 // }
 
-
-Cypress.Commands.add('addAllTodoTasks',()=>{
-    cy.fixture('todoData').then((tasks)=>{
-        Object.keys(tasks).forEach((taskKey)=>{
-            const taskContent=tasks[taskKey]
-            cy.log(`Processing task:${taskContent}`)
-            cy.get('[data-cy="todo-input"]').should('have.attr', 'placeholder','Try typing something here').type(taskContent);
-            cy.get('[data-cy="add-update-btn"]').click()
-        })
-
-    })
-})
-
-
-
+Cypress.Commands.add('addAllTodoTasks', () => {
+  cy.fixture('todoData').then((tasks) => {
+    Object.keys(tasks).forEach((taskKey) => {
+      const taskContent = tasks[taskKey];
+      cy.log(`Processing task:${taskContent}`);
+      cy.get('[data-cy="todo-input"]')
+        .should('have.attr', 'placeholder', 'Try typing something here')
+        .type(taskContent);
+      cy.get('[data-cy="add-update-btn"]').click();
+    });
+  });
+});
