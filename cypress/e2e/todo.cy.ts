@@ -26,5 +26,21 @@ describe('Todo Page Test', () => {
 
   it('should mark a task complete', () => {
     cy.addAllTodoTasks();
+    cy.get(':nth-child(5) > input').click()
   });
+
+  it ('should delete a task ', ()=>{
+    cy.addAllTodoTasks();
+    cy.get(':nth-child(2) > .delete-edit-container > .delete-btn').should('be.visible').click()
+  })
+  it('should update a task ', ()=>{
+    cy.addAllTodoTasks();
+    cy.get(':nth-child(2) > .delete-edit-container > .edit-btn').should('be.visible').click()
+    cy.fixture('todoData').then((data)=>{
+      cy.get('[data-cy="todo-input"]').should('be.visible').type(data.editedContent)
+      cy.get('[data-cy="add-update-btn"]').should('be.visible').and('contains.text', 'Update').click()
+      
+    })
+   
+  })
 });
