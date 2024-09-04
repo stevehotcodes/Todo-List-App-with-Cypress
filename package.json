@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:todo-list-app": "node dist/todo-list-app/server/server.mjs",
-     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css}\"",
-    "format-check": "prettier --check \"**/*.{js,jsx,ts,tsx}\" || (echo 'Code style issues found. Please run \"npm run format\" to fix them.' && exit 1)"
+    "format": "prettier --write \"**/*.{js,ts,html,css}\"",
+    "format-check": "prettier --check \"**/*.{js,ts,html,css}\" || (echo 'Code style issues found. Please run \"npm run format\" to fix them.' && exit 1)"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,6 @@
     "@angular/router": "^18.1.0",
     "@angular/ssr": "^18.1.2",
     "express": "^4.18.2",
-    "prettier": "^3.3.3",
     "rxjs": "~7.8.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
@@ -44,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.3.3",
     "typescript": "~5.5.2"
   }
 }
